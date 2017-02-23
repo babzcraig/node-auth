@@ -16,6 +16,12 @@
     "mongodb":"*",
     "mongoose": "*",
     "connect-flash": "*",
-
+    "express-validator": "*",
+    "express-session": "*",
+    "express-messages": "*",
+    "passport": "*",
+    "passport-local": "*",
+    "passport-http": "*",
+    "multer": "*"
   }
 }
