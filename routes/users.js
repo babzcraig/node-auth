@@ -73,18 +73,15 @@ router.post('/register', upload.single('profileImage'),  function(req, res, next
       profileImage: profileImageName
     });
 
-    //Create User
-    // User.createUser(newUser, function(err, user) {
-    //   if (err) {
-    //     throw err;
-    //     console.log(user);
-    //   }
-    //
-    //   // Success Message
-    //   req.flash('success', 'You are now registered and may log in!');
-    //   res.location('/');
-    //   res.redirect('/');
-    // });
+    // Create User
+    User.createUser(newUser, function(err, user) {
+      if (err) throw err;
+      console.log(user);  
+    });
+    // Success Message
+    req.flash('success', 'You are now registered and may log in!');
+    res.location('/');
+    res.redirect('/');
   }
 });
 
