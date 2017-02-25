@@ -31,15 +31,19 @@ html(lang='en')
             //  a(href='/contact') Contact
             li(class=( activeClass == 'Members' ? 'active' : ''  ))
               a(href='/') Members
-            li(class=( activeClass == 'Register' ? 'active' : ''  ))
-              a(href='/users/register') Register
-            li(class=( activeClass == 'Login' ? 'active' : ''  ))
-              a(href='/users/login') Log In
+            if !user
+              li(class=( activeClass == 'Register' ? 'active' : ''  ))
+                a(href='/users/register') Register
+            if !user
+              li(class=( activeClass == 'Login' ? 'active' : ''  ))
+                a(href='/users/login') Log In
           ul.nav.navbar-nav.navbar-right
-            li
-              a(href='/users/logout') Log Out
+            if user
+              li
+                a(href='/users/logout') Log Out
         .nav-collapse
     .container
+      != messages()
       block content
 
       
@@ -47,4 +51,3 @@ html(lang='en')
     // Placed at the end of the document so the pages load faster
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js')
     script(src='javascripts/bootstrap.js')
-

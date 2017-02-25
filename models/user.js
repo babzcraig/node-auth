@@ -28,6 +28,23 @@ var userSchema = mongoose.Schema({
 
 var User = module.exports = mongoose.model('User', userSchema);
 
+module.exports.getUserByUsername = function(username, callback) {
+  var query = {username: username};
+  User.findOne(query, callback)
+}
+
+module.exports.getUserById = function(id, callback) {
+  User.findById(id, callback)
+}
+
+module.exports.comparePassword = function(candidatePassword, hash, callback) {
+  var isMatch = false;
+  if (candidatePassword === hash) {
+    isMatch = true
+  }
+  callback(null, isMatch)
+}
+
 module.exports.createUser = function(newUser, callback) {
   newUser.save(callback)
 };
